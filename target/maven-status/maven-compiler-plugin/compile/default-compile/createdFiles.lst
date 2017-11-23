@@ -1,0 +1,5 @@
+lab\phb\tokobukuapp\controller\WebController.class
+lab\phb\tokobukuapp\repo\TokobukuRepo.class
+lab\phb\tokobukuapp\controller\AppController.class
+lab\phb\tokobukuapp\entity\Tokobuku.class
+lab\phb\tokobukuapp\TokoBukuappApplication.class

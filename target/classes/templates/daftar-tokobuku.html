@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daftar Buku</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body style="background-color: #f0f000">
+    <h1 align="center">Daftar Toko Buku</h1>
+
+    <table border="1" align="center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Judul Buku</th>
+                <th>Harga</th>
+                <th>Opsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tkbuku : ${daftarTokobuku}">
+                <td th:text="${tkbuku.id}"></td>
+                <td th:text="${tkbuku.judul_buku}"></td>
+                <td th:text="${tkbuku.harga}"></td>
+                <td>
+                    <a th:href="@{/edit(id=${tkbuku.id})}">Ubah</a>|
+                    <a th:href="@{/hapus(id=${tkbuku.id})}">Hapus</a>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+              <td>
+                  <a href="/tambah-data.html">
+                      Tambah
+                  </a>
+              </td>
+          </tr>
+      </tfoot>
+  </table>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+	<title>Aplikasi perekaman data Toko Buku</title>
+</head>
+<body style="background-color: #f0f000" align="center">
+	<h1 align="center">Tambah Data Toko Buku</h1>
+	<div align="center">
+		<form th:object="${tkbuku}" 
+		th:action="@{/tambah-data}"
+		method="post">
+		<table>
+			<tr>
+				<td>Id</td>
+				<td><input type="text" 
+					th:field="*{id}"/></td>
+				</tr>
+				<tr>
+					<td>Judul Buku</td>
+					<td><input type="text" 
+						th:field="*{judul_buku}"/></td>
+					</tr>
+					<tr>
+						<td>Harga</td>
+						<td><input type="text" 
+							th:field="*{harga}"/></td>
+						</tr>
+					</table>
+					<button type="submit">Simpan</button>
+				</form>
+			</div>
+		</body>
+		</html>
