@@ -1,4 +1,4 @@
-package lab.phb.mhswebapp.controller;
+package lab.phb.tokobukuapp.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,5 +8,7 @@ public class AppController {
     
     @RequestMapping("/index")
     public void home() {}
+
+    
     
 }

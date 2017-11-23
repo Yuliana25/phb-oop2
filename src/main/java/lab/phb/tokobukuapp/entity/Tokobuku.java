@@ -1,4 +1,4 @@
-package lab.phb.mhswebapp.entity;
+package lab.phb.tokobukuapp.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,16 +7,16 @@ import lombok.Setter;
 
 @Entity
 //@Table(name = "mahasiswa")
-public class Mahasiswa {
+public class Tokobuku {
     
     @Id
     @Getter @Setter
-    private String nim;
+    private String id;
     
     @Getter @Setter
-    private String nama;
+    private String judul_buku;
     
     @Getter @Setter
-    private String jurusan;
+    private String harga;
     
 }

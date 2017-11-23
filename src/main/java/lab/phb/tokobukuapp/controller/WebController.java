@@ -1,7 +1,7 @@
-package lab.phb.mhswebapp.controller;
+package lab.phb.tokobukuapp.controller;
 
-import lab.phb.mhswebapp.repo.MahasiswaRepo;
-import lab.phb.mhswebapp.entity.Mahasiswa;
+import lab.phb.tokobukuapp.repo.TokobukuRepo;
+import lab.phb.tokobukuapp.entity.Tokobuku;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,45 +16,51 @@ import org.springframework.ui.Model;
 public class WebController {
     
     @Autowired
-    private MahasiswaRepo mhsRepo;
+    private TokobukuRepo tkbukuRepo;
 	
-    @RequestMapping("/daftar-mahasiswa")
-    public void daftarMahasiswa(Model model) {
-        model.addAttribute("daftarMahasiswa", 
-                mhsRepo.findAll());
+    @RequestMapping("/daftar-tokobuku")
+    public void daftarTokobuku(Model model) {
+        model.addAttribute("daftarTokobuku", 
+                tkbukuRepo.findAll());
     }
 
     @RequestMapping("/tambah-data")
     public void tambahData(
-    	@ModelAttribute("mhs") Mahasiswa mhs,
+    	@ModelAttribute("tkbuku") Tokobuku tkbuku,
     	BindingResult result) {}
 
     @RequestMapping(value = "/tambah-data",
     	method = RequestMethod.POST) 
     public String simpanDataBaru(
-    		@ModelAttribute("mhs") Mahasiswa mhs,
+    		@ModelAttribute("tkbuku") Tokobuku tkbuku,
     		BindingResult result) {
-    	System.out.println(mhs.getNim());
-    	mhsRepo.save(mhs);
+    	System.out.println(tkbuku.getId());
+    	tkbukuRepo.save(tkbuku);
 
-    	return "redirect:/daftar-mahasiswa";
+    	return "redirect:/daftar-tokobuku";
     }
 
     @RequestMapping("/edit")
     public void getEditForm(
-    		@RequestParam("nim") String nim, 
+    		@RequestParam("id") String id, 
     		Model model) {
-    	Mahasiswa result = mhsRepo.findOne(nim);
-    	model.addAttribute("mhs", result);
+    	Tokobuku result = tkbukuRepo.findOne(id);
+    	model.addAttribute("tkbuku", result);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String simpanEditData(
-    		@ModelAttribute("mhs") Mahasiswa mhs,
+    		@ModelAttribute("tkbuku") Tokobuku tkbuku,
     		BindingResult result) {
-    	System.out.println("nim : " + mhs.getNim());
-    	mhsRepo.save(mhs);
-    	return "redirect:/daftar-mahasiswa";
+    	System.out.println("id : " + tkbuku.getId());
+    	tkbukuRepo.save(tkbuku);
+    	return "redirect:/daftar-tokobuku";
+    }
+    
+    @RequestMapping("/hapus")
+    public String hapusData(@RequestParam("id") String id) {
+        tkbukuRepo.delete(id);
+        return "redirect:/daftar-tokobuku";
     }
     
 }
